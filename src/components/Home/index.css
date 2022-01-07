@@ -1,0 +1,13 @@
+.homeContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #161625;
+}
+
+.homeRouteLoader {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
