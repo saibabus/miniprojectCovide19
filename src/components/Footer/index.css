@@ -1,0 +1,57 @@
+.footerBar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: transparent;
+  padding: 60px;
+}
+.footerHeading {
+  width: 130px;
+  font-family: Bree Serif;
+  font-style: normal;
+  font-weight: normal;
+  height: 24px;
+  line-height: 24px;
+  font-size: 20px;
+  text-align: center;
+  color: #f8fafc;
+}
+.sapnastyle {
+  color: #007bff;
+}
+.footerPara {
+  width: 348px;
+  height: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+}
+.iconsContainer {
+  display: flex;
+}
+.gitIcon {
+  font-size: 50px;
+  color: #cbd5e1;
+  margin: 5px;
+}
+.instIcon {
+  font-size: 50px;
+  color: #cbd5e1;
+  margin: 5px;
+}
+.twiIcon {
+  font-size: 50px;
+  fill: #cbd5e1;
+  margin: 5px;
+}

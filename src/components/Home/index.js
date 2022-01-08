@@ -1,7 +1,16 @@
 import {Component} from 'react'
+
 import Loader from 'react-loader-spinner'
+import {BsSearch} from 'react-icons/bs'
+import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
+import StateWidecovidDataTable from '../StateWidecovidDataTable'
+import CovidSelectCard from '../CovidSelectCard'
+import Footer from '../Footer'
+import Header from '../Header'
+import CovidError from '../CovidError'
 import './index.css'
 
+let dataOrderis = []
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -157,7 +166,11 @@ const statesList = [
 ]
 
 class Home extends Component {
-  state = {allstatesData: [], apiStatus: apiStatusConstants.initial}
+  state = {
+    allstatesData: [],
+    selectedCard: 'Confirmed',
+    apiStatus: apiStatusConstants.initial,
+  }
 
   componentDidMount() {
     this.getStatesData()
@@ -167,6 +180,7 @@ class Home extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
+
     const resultslist = []
     const options = {
       method: 'GET',
@@ -178,7 +192,6 @@ class Home extends Component {
 
     if (response.ok) {
       const data = await response.json()
-
       console.log(data)
       const keyNames = Object.keys(data)
 
@@ -191,25 +204,32 @@ class Home extends Component {
           const tested = total.tested ? total.tested : 0
           const population = meta.population ? meta.population : 0
           const stateCode = keyName
-          const name = statesList.find(state => state.state_code === keyName)
-            .state_name
-          console.log(name)
+
+          // const name = statesList.find(state => state.state_code === keyName)
+          //  .state_name
+          // console.log(name)
           // console.log(statesList)
+
           const updated = {
-            total: data[keyName].total,
-            meta: data[keyName].meta,
             stateCode,
-            name,
             confirmed,
             deceased,
             tested,
             population,
             recovered,
+            active: confirmed - (deceased + recovered),
           }
           resultslist.push(updated)
         }
       })
-      console.log(resultslist)
+      dataOrderis = resultslist
+      // console.log(resultslist)
+      this.setState({
+        allstatesData: resultslist,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
@@ -219,18 +239,161 @@ class Home extends Component {
     </div>
   )
 
+  activeCard = caseis => {
+    this.setState({selectedCard: caseis})
+  }
+
+  ascendingOrder = () => {
+    this.setState({allstatesData: dataOrderis})
+  }
+
+  descendingOrder = () => {
+    const datadescOrdr = dataOrderis.slice().reverse()
+    this.setState({allstatesData: datadescOrdr})
+  }
+
+  renderSuccessView = () => {
+    const {allstatesData, selectedCard} = this.state
+    const countryCardDetails = [
+      {
+        testId: 'countryWideConfirmedCases',
+        imgSm: 'saibabu',
+        imgLg:
+          'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557126/check-mark_1-7_buoycu.png',
+        altText: 'country wide confirmed cases pic',
+        caseis: 'Confirmed',
+        count: allstatesData
+          .map(eachstate => eachstate.confirmed)
+          .reduce((a, b) => a + b),
+      },
+      {
+        testId: 'countryWideActiveCases',
+        imgSm: 'saibabu',
+        imgLg:
+          'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557295/protection_1-3_zhjqeg.png',
+        altText: 'country wide active cases pic',
+        caseis: 'Active',
+        count: allstatesData
+          .map(eachstate => eachstate.active)
+          .reduce((a, b) => a + b),
+      },
+      {
+        testId: 'countryWideRecoveredCases',
+        imgSm: 'saibabu',
+        imgLg:
+          'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557295/recovered_1-3_ovlq1d.png',
+        altText: 'country wide recovered cases pic',
+        caseis: 'Recovered',
+        count: allstatesData
+          .map(eachstate => eachstate.recovered)
+          .reduce((a, b) => a + b),
+      },
+      {
+        testId: 'countryWideDeceasedCases',
+        imgSm: 'saibabu',
+        imgLg:
+          'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557194/breathing_1-3_w0wthz.png',
+        altText: 'country wide deceased cases pic',
+        caseis: 'Deceased',
+        count: allstatesData
+          .map(eachstate => eachstate.deceased)
+          .reduce((a, b) => a + b),
+      },
+    ]
+
+    // console.log(countryCardDetails)
+
+    return (
+      <div className="homeSuccessCon">
+        <div className="searchContainer">
+          <BsSearch className="searchIcon" />
+          <input
+            type="search"
+            placeholder="Enter the State"
+            className="searchInput"
+          />
+        </div>
+
+        <ul className="covidSelectcontainer">
+          {countryCardDetails.map(eachone => (
+            <CovidSelectCard
+              covidselects={eachone}
+              key={eachone.testId}
+              activeCard={this.activeCard}
+              isActive={selectedCard === eachone.caseis}
+            />
+          ))}
+        </ul>
+
+        <ul
+          testid="stateWiseCovidDataTable"
+          className="stateWiseCovidDataTable"
+        >
+          <li className="stateWiseCovidDataTableHeading">
+            <h1 className="stateWiseCovidDataTableHeadingOptionsPri">
+              State/UT
+              <button
+                type="button"
+                className="buttonOrder"
+                testid="ascendingSort"
+                onClick={this.ascendingOrder}
+              >
+                <FcGenericSortingAsc className="orderIcon" />
+              </button>
+              <button
+                type="button"
+                className="buttonOrder"
+                testid="descendingSort"
+                onClick={this.descendingOrder}
+              >
+                <FcGenericSortingDesc className="orderIcon" />
+              </button>
+            </h1>
+            <h1 className="stateWiseCovidDataTableHeadingOptions">Confirmed</h1>
+            <h1 className="stateWiseCovidDataTableHeadingOptions">Active</h1>
+            <h1 className="stateWiseCovidDataTableHeadingOptions">Recovered</h1>
+            <h1 className="stateWiseCovidDataTableHeadingOptions">Deceased</h1>
+            <h1 className="stateWiseCovidDataTableHeadingOptions">
+              Population
+            </h1>
+          </li>
+
+          <hr className="linestyle" />
+          {allstatesData.map(eachState => (
+            <StateWidecovidDataTable
+              key={eachState.stateCode}
+              eachState={eachState}
+            />
+          ))}
+        </ul>
+        <Footer />
+      </div>
+    )
+  }
+
+  renderFailureView = () => <CovidError />
+
   renderapiStausViews = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
         return this.renderLoaingView()
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
       default:
         return null
     }
   }
 
   render() {
-    return <div className="homeContainer">{this.renderapiStausViews()}</div>
+    return (
+      <div className="homeContainer">
+        <Header />
+        {this.renderapiStausViews()}
+      </div>
+    )
   }
 }
 export default Home

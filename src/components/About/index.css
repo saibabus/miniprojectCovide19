@@ -1,0 +1,105 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  background: #161625;
+  overflow: auto;
+  width: 100%;
+}
+.aboutRouteLoader {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutSuccessCon {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 64px;
+  overflow: auto;
+}
+.aboutHeading {
+  width: 65px;
+  height: 32px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0px;
+  /* identical to box height, or 133% */
+
+  /* Light / blue-gray / 50 */
+
+  color: #f8fafc;
+}
+
+.aboutsubHeading {
+  height: 36px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height, or 150% */
+
+  /* Light / blue-gray / 200 */
+
+  color: #e2e8f0;
+}
+
+.aboutPara {
+  width: 206px;
+  height: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+}
+.factoidsdataCon {
+  list-style-type: none;
+  padding: 0px;
+}
+.factoids {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+}
+
+.eachFaqsCon {
+  display: flex;
+  flex-direction: column;
+}
+.question {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  /* identical to box height, or 200% */
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+  margin: 0px;
+}
+.answer {
+  font-family: Roboto;
+  margin: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  /* or 200% */
+
+  color: #007bff;
+}

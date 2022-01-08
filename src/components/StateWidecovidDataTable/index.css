@@ -1,0 +1,51 @@
+.eachstateWiseCovidDataTableHeading {
+  width: 100%;
+  height: 50px;
+  padding: 32px;
+  align-items: center;
+  display: flex;
+}
+
+.eachstateWiseCovidDataTableHeadingOptionsPri {
+  width: 20%;
+  height: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Light / blue-gray / 50 */
+}
+.eachstateWiseCovidDataTableHeadingOptions {
+  width: 16%;
+  height: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: end;
+  /* identical to box height, or 150% */
+
+  /* Light / blue-gray / 50 */
+}
+.name {
+  color: #f8fafc;
+}
+.confirmed {
+  color: #ff073a;
+}
+.recovered {
+  color: #28a745;
+}
+.population {
+  color: #94a3b8;
+}
+.active {
+  color: #007bff;
+}
+.deceased {
+  color: #6c757d;
+}

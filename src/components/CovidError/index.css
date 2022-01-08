@@ -1,0 +1,57 @@
+.covidErrorContainer {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #161625;
+  width: 100%;
+}
+.errorHeading {
+  width: 281px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  /* Light / blue-gray / 300 */
+
+  color: #cbd5e1;
+}
+.errorPara {
+  width: 500px;
+  margin: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 32px;
+  /* or 160% */
+
+  text-align: center;
+
+  /* Light / blue-gray / 400 */
+
+  color: #94a3b8;
+}
+.homeButton {
+  background: #2563eb;
+  border-radius: 12px;
+  outline: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  margin: 10px;
+}
+.linkstyle {
+  text-decoration: none;
+}
+.errorImage {
+  width: 380px;
+}

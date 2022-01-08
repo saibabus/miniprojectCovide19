@@ -7,7 +7,6 @@
   background: #1e1e30;
 }
 .navHeading {
-  position: absolute;
   width: 130px;
   margin: 0px;
   font-family: Bree Serif;
@@ -75,4 +74,7 @@
   /* Light / blue-gray / 400 */
 
   color: #94a3b8;
+}
+.styleLink {
+  text-decoration: none;
 }

@@ -1,0 +1,63 @@
+.eachcovidselect {
+  margin: 5px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 12px;
+
+  background-color: transparent;
+}
+.button {
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+}
+.optionstext {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+}
+.countis {
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.sConfirmed {
+  color: #ff073a;
+  background-color: #331427;
+}
+.sActive {
+  color: #007bff;
+  background-color: #132240;
+}
+.sRecovered {
+  color: #28a745;
+  background-color: #182829;
+}
+.sDeceased {
+  color: #6c757d;
+  background-color: #212230;
+}
+.nConfirmed {
+  color: #ff073a;
+}
+.nActive {
+  color: #007bff;
+}
+.nRecovered {
+  color: #28a745;
+}
+.nDeceased {
+  color: #6c757d;
+}
