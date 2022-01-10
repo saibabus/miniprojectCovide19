@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background: #161625;
-  overflow: auto;
   width: 100%;
 }
 
@@ -17,27 +16,27 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 64px;
-  overflow: auto;
+  padding: 55px;
 }
 .searchContainer {
   background: #2f2f43;
   border-radius: 8px;
   display: flex;
   align-self: center;
-  width: 824px;
+  max-width: 824px;
+  width: 100%;
   height: 72px;
   padding-left: 32px;
   padding-right: 32px;
   padding-top: 24px;
   padding-bottom: 24px;
 }
+
 .searchIcon {
   font-weight: bold;
   font-size: 24px;
   color: #94a3b8;
   padding-right: 5px;
-  line-height: 24px;
 }
 
 .searchInput {
@@ -52,11 +51,31 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
+  border: 1px red solid;
   /* identical to box height, or 150% */
   /* Light / blue-gray / 400 */
   color: #94a3b8;
 }
 
+@media screen and (max-width: 576px) {
+  .searchContainer {
+    padding: 10px;
+    height: 48px;
+  }
+  .homeSuccessCon {
+    padding: 10px;
+  }
+  .searchInput {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+.tablewrap {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid greenyellow;
+}
 .stateWiseCovidDataTable {
   width: 1400px;
   background: #1e1e30;
@@ -68,6 +87,7 @@
   list-style-type: none;
   padding: 0px;
   flex-direction: column;
+  margin: 0px;
 }
 
 .stateWiseCovidDataTableHeading {
@@ -141,4 +161,14 @@
   justify-content: center;
   width: 100%;
   margin-top: 10px;
+}
+.searchDataCon {
+  list-style-type: none;
+  padding: 0px;
+  max-width: 824px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
 }

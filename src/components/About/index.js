@@ -24,14 +24,14 @@ class About extends Component {
     const url = 'https://apis.ccbp.in/covid19-faqs'
     const response = await fetch(url)
 
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
       const data = await response.json()
 
       const fetchfactoidsData = data.factoids
       const fetchfaqData = data.faq
       // console.log(fetchfactoidsData)
-      console.log(fetchfaqData)
+      // console.log(fetchfaqData)
       this.setState({
         faqData: fetchfaqData,
         apiStatus: apiStatusConstants.success,
@@ -58,9 +58,9 @@ class About extends Component {
         <h1 className="aboutsubHeading">
           COVID-19 vaccines be ready for distribution
         </h1>
-        <ul className="factoidsdataCon">
+        <ul className="factoidsdataCon" testid="faqsUnorderedList">
           {faqData.map(eachone => (
-            <li className="eachFaqsCon">
+            <li className="eachFaqsCon" key={eachone.qno}>
               <p className="question">{`${eachone.qno}.${eachone.question}`}</p>
               <p className="answer">{eachone.answer}</p>
             </li>
@@ -68,7 +68,7 @@ class About extends Component {
         </ul>
         <ul className="factoidsdataCon">
           {factoidsData.map(eachone => (
-            <li className="eachFaqsCon">
+            <li className="eachFaqsCon" key={eachone.id}>
               <p className="factoids">{eachone.banner}</p>
             </li>
           ))}

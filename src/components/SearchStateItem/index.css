@@ -1,0 +1,99 @@
+.eachsearchContainer {
+  border-bottom: 0.3px solid #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 824px;
+  width: 100%;
+  height: 72px;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border: 1px solid saddlebrown;
+}
+
+.eachsearchInput {
+  background-color: transparent;
+  margin: 0px;
+  border: none;
+  outline: none;
+  height: 24px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px red solid;
+  /* identical to box height, or 150% */
+  /* Light / blue-gray / 400 */
+  color: #94a3b8;
+}
+
+.codeCon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  width: 76px;
+  height: 32px;
+  /* Transparent Info / 16% */
+
+  background: rgba(28, 212, 212, 0.16);
+  border-radius: 4px;
+}
+.code {
+  width: 20px;
+  height: 24px;
+  /* Text Font / S1 Subtitle */
+
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Light / yellow / 400 */
+
+  color: #facc15;
+
+  /* Inside auto layout */
+
+  margin: 0px 6px;
+}
+.arrows {
+  border: 2px solid #facc15;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+@media screen and (max-width: 576px) {
+  .eachsearchContainer {
+    padding: 10px;
+    height: 48px;
+  }
+  .eachsearchInput {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .code {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  .arrows {
+    border: 2px solid #facc15;
+    border-radius: 2px;
+    padding: 2px;
+    height: 15px;
+  }
+  .codeCon {
+    height: 25px;
+    width: 65px;
+  }
+}
+.styleLink{
+    text-decoration: none;
+}

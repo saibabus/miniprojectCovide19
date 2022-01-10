@@ -8,6 +8,7 @@ import CovidSelectCard from '../CovidSelectCard'
 import Footer from '../Footer'
 import Header from '../Header'
 import CovidError from '../CovidError'
+import SearchStateItem from '../SearchStateItem'
 import './index.css'
 
 let dataOrderis = []
@@ -170,6 +171,7 @@ class Home extends Component {
     allstatesData: [],
     selectedCard: 'Confirmed',
     apiStatus: apiStatusConstants.initial,
+    searchInput: '',
   }
 
   componentDidMount() {
@@ -192,7 +194,7 @@ class Home extends Component {
 
     if (response.ok) {
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       const keyNames = Object.keys(data)
 
       keyNames.forEach(keyName => {
@@ -252,8 +254,13 @@ class Home extends Component {
     this.setState({allstatesData: datadescOrdr})
   }
 
+  changeSearchInput = event => {
+    // console.log(event.target.value)
+    this.setState({searchInput: event.target.value})
+  }
+
   renderSuccessView = () => {
-    const {allstatesData, selectedCard} = this.state
+    const {allstatesData, selectedCard, searchInput} = this.state
     const countryCardDetails = [
       {
         testId: 'countryWideConfirmedCases',
@@ -303,6 +310,15 @@ class Home extends Component {
 
     // console.log(countryCardDetails)
 
+    const searchStateItems = allstatesData.filter(eachone =>
+      eachone.stateCode.toUpperCase().includes(searchInput.toUpperCase()),
+    )
+    // console.log(searchStateItems)
+    const showsContentdata =
+      searchStateItems.length !== allstatesData.length &&
+      searchStateItems.length !== 0
+
+    // console.log(showsContentdata)
     return (
       <div className="homeSuccessCon">
         <div className="searchContainer">
@@ -311,61 +327,85 @@ class Home extends Component {
             type="search"
             placeholder="Enter the State"
             className="searchInput"
+            value={searchInput}
+            onChange={this.changeSearchInput}
           />
         </div>
-
-        <ul className="covidSelectcontainer">
-          {countryCardDetails.map(eachone => (
-            <CovidSelectCard
-              covidselects={eachone}
-              key={eachone.testId}
-              activeCard={this.activeCard}
-              isActive={selectedCard === eachone.caseis}
-            />
-          ))}
-        </ul>
-
-        <ul
-          testid="stateWiseCovidDataTable"
-          className="stateWiseCovidDataTable"
-        >
-          <li className="stateWiseCovidDataTableHeading">
-            <h1 className="stateWiseCovidDataTableHeadingOptionsPri">
-              State/UT
-              <button
-                type="button"
-                className="buttonOrder"
-                testid="ascendingSort"
-                onClick={this.ascendingOrder}
+        {showsContentdata ? (
+          <ul className="searchDataCon">
+            {searchStateItems.map(eachstate => (
+              <SearchStateItem
+                key={eachstate.stateCode}
+                searchstateData={eachstate}
+              />
+            ))}
+          </ul>
+        ) : (
+          <>
+            <ul className="covidSelectcontainer">
+              {countryCardDetails.map(eachone => (
+                <CovidSelectCard
+                  covidselects={eachone}
+                  key={eachone.testId}
+                  activeCard={this.activeCard}
+                  isActive={selectedCard === eachone.caseis}
+                />
+              ))}
+            </ul>
+            <div className="tablewrap">
+              <ul
+                testid="stateWiseCovidDataTable"
+                className="stateWiseCovidDataTable"
               >
-                <FcGenericSortingAsc className="orderIcon" />
-              </button>
-              <button
-                type="button"
-                className="buttonOrder"
-                testid="descendingSort"
-                onClick={this.descendingOrder}
-              >
-                <FcGenericSortingDesc className="orderIcon" />
-              </button>
-            </h1>
-            <h1 className="stateWiseCovidDataTableHeadingOptions">Confirmed</h1>
-            <h1 className="stateWiseCovidDataTableHeadingOptions">Active</h1>
-            <h1 className="stateWiseCovidDataTableHeadingOptions">Recovered</h1>
-            <h1 className="stateWiseCovidDataTableHeadingOptions">Deceased</h1>
-            <h1 className="stateWiseCovidDataTableHeadingOptions">
-              Population
-            </h1>
-          </li>
+                <li className="stateWiseCovidDataTableHeading">
+                  <h1 className="stateWiseCovidDataTableHeadingOptionsPri">
+                    State/UT
+                    <button
+                      type="button"
+                      className="buttonOrder"
+                      testid="ascendingSort"
+                      onClick={this.ascendingOrder}
+                    >
+                      <FcGenericSortingAsc className="orderIcon" />
+                    </button>
+                    <button
+                      type="button"
+                      className="buttonOrder"
+                      testid="descendingSort"
+                      onClick={this.descendingOrder}
+                    >
+                      <FcGenericSortingDesc className="orderIcon" />
+                    </button>
+                  </h1>
+                  <h1 className="stateWiseCovidDataTableHeadingOptions">
+                    Confirmed
+                  </h1>
+                  <h1 className="stateWiseCovidDataTableHeadingOptions">
+                    Active
+                  </h1>
+                  <h1 className="stateWiseCovidDataTableHeadingOptions">
+                    Recovered
+                  </h1>
+                  <h1 className="stateWiseCovidDataTableHeadingOptions">
+                    Deceased
+                  </h1>
+                  <h1 className="stateWiseCovidDataTableHeadingOptions">
+                    Population
+                  </h1>
+                </li>
 
-          <hr className="linestyle" />
-          {allstatesData.map(eachState => (
-            <StateWidecovidDataTable
-              key={eachState.stateCode}
-              eachState={eachState}
-            />
-          ))}
-        </ul>
+                <hr className="linestyle" />
+                {allstatesData.map(eachState => (
+                  <StateWidecovidDataTable
+                    key={eachState.stateCode}
+                    eachState={eachState}
+                  />
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+
         <Footer />
       </div>
     )
