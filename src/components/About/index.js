@@ -50,6 +50,7 @@ class About extends Component {
 
   renderSuccessView = () => {
     const {faqData, factoidsData} = this.state
+
     return (
       <div className="aboutSuccessCon">
         <h1 className="aboutHeading">About</h1>

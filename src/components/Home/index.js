@@ -196,16 +196,18 @@ class Home extends Component {
       const data = await response.json()
       // console.log(data)
       const keyNames = Object.keys(data)
+      console.log(keyNames)
 
-      keyNames.forEach(keyName => {
-        if (data[keyName]) {
-          const {total, meta} = data[keyName]
+      statesList.forEach(each => {
+        if (data[each.state_code]) {
+          const {total, meta} = data[each.state_code]
           const confirmed = total.confirmed ? total.confirmed : 0
           const deceased = total.deceased ? total.deceased : 0
           const recovered = total.recovered ? total.recovered : 0
           const tested = total.tested ? total.tested : 0
           const population = meta.population ? meta.population : 0
-          const stateCode = keyName
+          const stateCode = each.state_code
+          const stateName = each.state_name
 
           // const name = statesList.find(state => state.state_code === keyName)
           //  .state_name
@@ -213,6 +215,7 @@ class Home extends Component {
           // console.log(statesList)
 
           const updated = {
+            stateName,
             stateCode,
             confirmed,
             deceased,
@@ -225,7 +228,7 @@ class Home extends Component {
         }
       })
       dataOrderis = resultslist
-      // console.log(resultslist)
+      console.log(resultslist)
       this.setState({
         allstatesData: resultslist,
         apiStatus: apiStatusConstants.success,

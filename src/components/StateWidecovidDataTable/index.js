@@ -3,7 +3,8 @@ import './index.css'
 const StateWidecovidDataTable = props => {
   const {eachState} = props
   const {
-    stateCode,
+    stateName,
+
     confirmed,
     recovered,
     deceased,
@@ -13,7 +14,7 @@ const StateWidecovidDataTable = props => {
   return (
     <li className="eachstateWiseCovidDataTableHeading">
       <h1 className="eachstateWiseCovidDataTableHeadingOptionsPri name">
-        {stateCode}
+        {stateName}
       </h1>
       <h1 className="eachstateWiseCovidDataTableHeadingOptions confirmed">
         {confirmed}
