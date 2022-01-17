@@ -4,6 +4,8 @@ import CovidError from '../CovidError'
 import DistrictItems from '../DistrictItems'
 import CovidSelectCard from '../CovidSelectCard'
 import Header from '../Header'
+import BarDataOfState from '../BarDataOfState'
+import LineChartsOfCovid from '../LineChartsOfCovid'
 
 import './index.css'
 
@@ -160,6 +162,7 @@ const apiStatusConstants = {
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
 }
+
 let codeis = ''
 const resultsListdistrict = []
 class StateSpecific extends Component {
@@ -194,8 +197,8 @@ class StateSpecific extends Component {
       const updateddata = data[codeis].dates
       const districsdatais = data[codeis].districts
       const disKeyName = Object.keys(districsdatais)
-      console.log(districsdatais)
-      console.log(updateddata)
+      //  console.log(districsdatais)
+      //  console.log(updateddata)
       const keyNames = Object.keys(updateddata)
       // const keylength = keyNames.length
 
@@ -246,7 +249,10 @@ class StateSpecific extends Component {
           const linerecovered = delta7.recovered ? delta7.recovered : 0
           const linedeceased = delta7.deceased ? delta7.deceased : 0
           const linetested = delta7.tested ? delta7.tested : 0
-          const lineactive = lineconfirmed - (linerecovered + linedeceased)
+          let lineactive = lineconfirmed - (linerecovered + linedeceased)
+          if (lineactive < 0) {
+            lineactive = 0
+          }
           eachDateDataDetails.push({
             date: keyname,
             Confirmed,
@@ -307,11 +313,9 @@ class StateSpecific extends Component {
     const showdistrictdata = []
     districsData.forEach(eachoneis => {
       if (eachoneis[cardSelect]) {
-        const countis = eachoneis[cardSelect]
-        const nameis = eachoneis.name
         showdistrictdata.push({
-          countis,
-          nameis,
+          countis: eachoneis[cardSelect],
+          nameis: eachoneis.name,
         })
       }
     })
@@ -333,7 +337,7 @@ class StateSpecific extends Component {
           'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557126/check-mark_1-7_buoycu.png',
         altText: 'state specific confirmed cases pic',
         caseis: 'Confirmed',
-        count: statedataAll[0].confirmed,
+        count: statedataAll[0].Confirmed,
       },
       {
         testId: 'stateSpecificActiveCasesContainer',
@@ -342,7 +346,7 @@ class StateSpecific extends Component {
           'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557295/protection_1-3_zhjqeg.png',
         altText: 'state specific active cases pic',
         caseis: 'Active',
-        count: statedataAll[0].active,
+        count: statedataAll[0].Active,
       },
       {
         testId: 'stateSpecificRecoveredCasesContainer',
@@ -351,7 +355,7 @@ class StateSpecific extends Component {
           'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557295/recovered_1-3_ovlq1d.png',
         altText: 'state specific recovered cases pic',
         caseis: 'Recovered',
-        count: statedataAll[0].recovered,
+        count: statedataAll[0].Recovered,
       },
       {
         testId: 'stateSpecificDeceasedCasesContainer',
@@ -360,7 +364,7 @@ class StateSpecific extends Component {
           'https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641557194/breathing_1-3_w0wthz.png',
         altText: 'state specific deceased cases pic',
         caseis: 'Deceased',
-        count: statedataAll[0].deceased,
+        count: statedataAll[0].Deceased,
       },
     ]
 
@@ -375,7 +379,7 @@ class StateSpecific extends Component {
           </div>
           <div className="testedCountContainer">
             <p className="textedText">Tested</p>
-            <p className="textedCount">{statedataAll.testeddata}</p>
+            <p className="textedCount">{statedataAll[0].tested}</p>
           </div>
         </div>
         <ul className="stateSelectcontainer">
@@ -392,9 +396,17 @@ class StateSpecific extends Component {
 
         <ul className="stateDistrictsContainer">
           {showdistrictdata.map(eachis => (
-            <DistrictItems key={eachis.nameis} districtdatadetails={eachis} />
+            <DistrictItems
+              key={`${eachis.nameis}1`}
+              districtdatadetails={eachis}
+            />
           ))}
         </ul>
+
+        <BarDataOfState statedataAll={statedataAll} cardSelect={cardSelect} />
+
+        <h1 className="textofDailySpreads">Daily Spread Trends</h1>
+        <LineChartsOfCovid statedataAll={statedataAll} />
       </div>
     )
   }

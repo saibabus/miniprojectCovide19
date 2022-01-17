@@ -22,13 +22,11 @@
   color: #007bff;
 }
 .footerPara {
-  width: 348px;
-  height: 24px;
   font-family: Roboto;
+  width: 350px;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  line-height: 24px;
   /* identical to box height, or 150% */
 
   text-align: center;

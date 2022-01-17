@@ -1,0 +1,22 @@
+.barContainer {
+  width: 100%;
+}
+
+.labelsizeis {
+  font-family: serif;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.nConfirmed {
+  fill: #ff073a;
+}
+.nActive {
+  fill: #007bff;
+}
+.nRecovered {
+  fill: #28a745;
+}
+.nDeceased {
+  fill: #6c757d;
+}

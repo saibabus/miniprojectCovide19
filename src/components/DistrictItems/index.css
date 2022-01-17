@@ -4,7 +4,9 @@
   justify-content: flex-start;
   color: #94a3b8;
   padding: 5px;
-  width: 25%;
+  width: 300px;
+  border: 1px solid red;
+  margin: 5px;
 }
 
 .districtName {
