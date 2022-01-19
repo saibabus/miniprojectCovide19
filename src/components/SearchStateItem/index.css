@@ -10,7 +10,6 @@
   padding-right: 32px;
   padding-top: 24px;
   padding-bottom: 24px;
-  border: 1px solid saddlebrown;
 }
 
 .eachsearchInput {
@@ -25,7 +24,6 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  border: 1px red solid;
   /* identical to box height, or 150% */
   /* Light / blue-gray / 400 */
   color: #94a3b8;
@@ -84,7 +82,6 @@
     line-height: 20px;
   }
   .arrows {
-    border: 2px solid #facc15;
     border-radius: 2px;
     padding: 2px;
     height: 15px;
@@ -94,6 +91,6 @@
     width: 65px;
   }
 }
-.styleLink{
-    text-decoration: none;
+.styleLink {
+  text-decoration: none;
 }

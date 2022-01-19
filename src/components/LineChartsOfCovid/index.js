@@ -22,8 +22,8 @@ const LineChartsOfCovid = props => {
 
   return (
     <div>
-      <ResponsiveContainer height={400} width="100%" className="linestyles1">
-        <LineChart data={statedataAll}>
+      <ResponsiveContainer height={400} className="linestyles1">
+        <LineChart data={statedataAll} margin={{right: 10}}>
           <XAxis dataKey="date" stroke="#FF073A" fontSize={10} />
           <YAxis
             stroke="#FF073A"
@@ -61,7 +61,7 @@ const LineChartsOfCovid = props => {
       </ResponsiveContainer>
 
       <ResponsiveContainer height={400} width="100%" className="linestyles2">
-        <LineChart data={statedataAll}>
+        <LineChart data={statedataAll} margin={{right: 10}}>
           <XAxis dataKey="date" stroke="#007BFF" fontSize={10} />
           <YAxis
             stroke="#007BFF"
@@ -99,7 +99,7 @@ const LineChartsOfCovid = props => {
       </ResponsiveContainer>
 
       <ResponsiveContainer height={400} width="100%" className="linestyles3">
-        <LineChart data={statedataAll}>
+        <LineChart data={statedataAll} margin={{right: 10}}>
           <XAxis dataKey="date" stroke="#27A243" fontSize={10} />
           <YAxis
             stroke="#27A243"
@@ -137,7 +137,7 @@ const LineChartsOfCovid = props => {
       </ResponsiveContainer>
 
       <ResponsiveContainer height={400} width="100%" className="linestyles4">
-        <LineChart data={statedataAll}>
+        <LineChart data={statedataAll} margin={{right: 10}}>
           <XAxis dataKey="date" stroke="#6C757D" fontSize={10} />
           <YAxis
             stroke="#6C757D"
@@ -175,7 +175,7 @@ const LineChartsOfCovid = props => {
       </ResponsiveContainer>
 
       <ResponsiveContainer height={400} width="100%" className="linestyles5">
-        <LineChart data={statedataAll}>
+        <LineChart data={statedataAll} margin={{right: 10}}>
           <XAxis dataKey="date" stroke="#9673B9" fontSize={10} />
           <YAxis
             stroke="#9673B9"

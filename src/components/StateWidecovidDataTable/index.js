@@ -4,7 +4,6 @@ const StateWidecovidDataTable = props => {
   const {eachState} = props
   const {
     stateName,
-
     confirmed,
     recovered,
     deceased,

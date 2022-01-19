@@ -61,3 +61,17 @@
 .nDeceased {
   color: #6c757d;
 }
+@media screen and (max-width: 460px) {
+  .eachcovidselect {
+    width: 140px;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .optionstext {
+    font-size: 12px;
+  }
+  .countis {
+    font-size: 18px;
+  }
+}

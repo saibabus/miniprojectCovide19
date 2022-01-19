@@ -62,7 +62,7 @@ class About extends Component {
         <ul className="factoidsdataCon" testid="faqsUnorderedList">
           {faqData.map(eachone => (
             <li className="eachFaqsCon" key={eachone.qno}>
-              <p className="question">{`${eachone.qno}.${eachone.question}`}</p>
+              <p className="question">{`${eachone.qno}. ${eachone.question}`}</p>
               <p className="answer">{eachone.answer}</p>
             </li>
           ))}
@@ -90,7 +90,6 @@ class About extends Component {
         return this.renderSuccessView()
       case apiStatusConstants.failure:
         return this.renderFailureView()
-
       default:
         return null
     }

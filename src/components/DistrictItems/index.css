@@ -1,37 +1,47 @@
 .districtCont {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   color: #94a3b8;
-  padding: 5px;
+  padding: 4px;
   width: 300px;
-  border: 1px solid red;
-  margin: 5px;
 }
 
 .districtName {
-  height: 24px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  margin-left: 20px;
-  line-height: 24px;
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
 
   /* identical to box height, or 150% */
 
   /* Light / blue-gray / 400 */
 }
 .districtcountis {
-  height: 24px;
-
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 18px;
   /* identical to box height, or 100% */
+  padding: 0px;
+  margin-right: 10px;
+}
 
-  text-align: right;
-  margin: 0px;
+@media screen and (max-width: 576px) {
+  .districtcountis {
+    font-size: 12px;
+  }
+  .districtName {
+    font-size: 12px;
+  }
+  .districtCont {
+    width: 140px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 720px) {
+  .districtCont {
+    width: 220px;
+  }
 }

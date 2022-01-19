@@ -3,11 +3,11 @@ import './index.css'
 
 const SearchStateItem = props => {
   const {searchstateData} = props
-  const {stateCode} = searchstateData
+  const {stateCode, stateName} = searchstateData
   return (
     <Link to={`/state/${stateCode}`} className="styleLink">
       <li className="eachsearchContainer">
-        <p className="eachsearchInput">{stateCode}</p>
+        <p className="eachsearchInput">{stateName}</p>
         <div className="codeCon">
           <p className="code">{stateCode}</p>
           <img

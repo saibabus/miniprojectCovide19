@@ -34,30 +34,27 @@
   justify-content: space-between;
   width: 100%;
 }
-.nameandUpdateContainer {
-  display: flex;
-  flex-direction: column;
-}
+
 .nameContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 13px;
 
   /* Light / Transparent / Light Blue / 16 */
 
   background: rgba(2, 132, 199, 0.16);
-  border-radius: 32px;
+  border-radius: 35px;
 }
 .stateNameheading {
   font-family: HK Grotesk;
   font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
+  font-weight: 500;
+  font-size: 30px;
   /* identical to box height, or 150% */
 
   /* Light / light-blue / 500 */
-
+  margin: 0px;
   color: #0ea5e9;
 
   /* Inside auto layout */
@@ -105,7 +102,7 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 24px;
   /* identical to box height, or 100% */
 
@@ -119,9 +116,57 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 48px;
   /* identical to box height, or 150% */
+}
+.textofDailySpreads {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 48px;
+  /* identical to box height, or 150% */
+
+  /* Light / blue-gray / 300 */
+
+  color: #cbd5e1;
+}
+
+.stateDistrictsContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  list-style-type: none;
+}
+
+@media screen and (max-width: 576px) {
+  .sateSuccessCon {
+    padding: 10px;
+  }
+  .stateNameheading {
+    font-size: 22px;
+  }
+  .topdistrictText {
+    font-size: 18px;
+  }
+
+  .textedCount {
+    font-size: 18px;
+  }
+  .textedText {
+    font-size: 14px;
+  }
+  .updateText {
+    font-size: 15px;
+  }
+  .textofDailySpreads {
+    font-size: 18px;
+  }
 }
 .nConfirmed {
   color: #ff073a;
@@ -134,26 +179,4 @@
 }
 .nDeceased {
   color: #6c757d;
-}
-
-.stateDistrictsContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 10px;
-  padding: 0px;
-  list-style-type: none;
-}
-.textofDailySpreads {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 48px;
-  /* identical to box height, or 150% */
-
-  /* Light / blue-gray / 300 */
-
-  color: #cbd5e1;
 }

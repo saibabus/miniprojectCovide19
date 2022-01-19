@@ -1,7 +1,7 @@
 .eachstateWiseCovidDataTableHeading {
   width: 100%;
   height: 50px;
-  padding: 32px;
+  padding: 30px;
   align-items: center;
   display: flex;
 }
@@ -31,6 +31,16 @@
 
   /* Light / blue-gray / 50 */
 }
+
+@media screen and (max-width: 576px) {
+  .eachstateWiseCovidDataTableHeadingOptionsPri {
+    font-size: 12px;
+  }
+  .eachstateWiseCovidDataTableHeadingOptions {
+    font-size: 12px;
+  }
+}
+
 .name {
   color: #f8fafc;
 }

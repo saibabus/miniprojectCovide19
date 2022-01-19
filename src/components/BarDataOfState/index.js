@@ -50,8 +50,8 @@ const BarDataOfState = props => {
     return eachoneis
   })
 
-  console.log(barDataforEach)
-  console.log(updatedcountdata)
+  // console.log(barDataforEach)
+  // console.log(updatedcountdata)
 
   const DataFormatterfordate = date => {
     const dateis = new Date(date)
@@ -60,37 +60,36 @@ const BarDataOfState = props => {
   }
 
   return (
-    <div className="barContainer">
-      <ResponsiveContainer height={400} width="100%">
-        <BarChart data={updatedcountdata}>
-          <XAxis
-            dataKey="date"
-            axisLine={false}
-            ticks={false}
-            tick={{
-              strokeWidth: 1,
-              fontSize: 10,
-              fontFamily: 'Roboto',
-            }}
-            tickFormatter={DataFormatterfordate}
-          />
+    <ResponsiveContainer height={400} width="100%">
+      <BarChart data={updatedcountdata} margin={{top: 30}}>
+        <XAxis
+          dataKey="date"
+          axisLine={false}
+          ticks={false}
+          tick={{
+            strokeWidth: 1,
+            fontSize: 10,
+            fontFamily: 'Roboto',
+          }}
+          tickFormatter={DataFormatterfordate}
+        />
 
-          <Tooltip cursor={{fill: 'transparent'}} />
+        <Tooltip cursor={{fill: 'transparent'}} />
 
-          <Bar
-            dataKey="count"
+        <Bar
+          isAnimationActive={false}
+          dataKey="count"
+          className={`labelsizeis n${cardSelect}`}
+          radius={[10, 10, 0, 0]}
+        >
+          <LabelList
+            position="top"
             className={`labelsizeis n${cardSelect}`}
-            radius={[10, 10, 0, 0]}
-          >
-            <LabelList
-              position="top"
-              className={`labelsizeis n${cardSelect}`}
-              dataKey="countupdate"
-            />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+            dataKey="countupdate"
+          />
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
   )
 }
 export default BarDataOfState

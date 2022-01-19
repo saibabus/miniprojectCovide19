@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background: #161625;
-  overflow: auto;
   width: 100%;
 }
 .aboutRouteLoader {
@@ -15,9 +14,9 @@
 .aboutSuccessCon {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   padding: 60px;
-  overflow: auto;
 }
 .aboutHeading {
   width: 65px;
@@ -60,6 +59,7 @@
 
   color: #94a3b8;
 }
+
 .factoidsdataCon {
   list-style-type: none;
   padding: 0px;
@@ -93,7 +93,6 @@
 }
 .answer {
   font-family: Roboto;
-  margin: 5px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -101,4 +100,26 @@
 
   color: #007bff;
   text-align: left;
+}
+
+@media screen and (max-width: 576px) {
+  .aboutPara {
+    font-size: 12px;
+  }
+  .aboutHeading {
+    font-size: 18px;
+  }
+
+  .aboutsubHeading {
+    font-size: 18px;
+  }
+  .question {
+    font-size: 11px;
+  }
+  .answer {
+    font-size: 11px;
+  }
+  .aboutSuccessCon {
+    padding: 30px;
+  }
 }

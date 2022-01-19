@@ -195,8 +195,8 @@ class Home extends Component {
     if (response.ok) {
       const data = await response.json()
       // console.log(data)
-      const keyNames = Object.keys(data)
-      console.log(keyNames)
+      // const keyNames = Object.keys(data)
+      //  console.log(keyNames)
 
       statesList.forEach(each => {
         if (data[each.state_code]) {
@@ -228,7 +228,7 @@ class Home extends Component {
         }
       })
       dataOrderis = resultslist
-      console.log(resultslist)
+      //   console.log(resultslist)
       this.setState({
         allstatesData: resultslist,
         apiStatus: apiStatusConstants.success,

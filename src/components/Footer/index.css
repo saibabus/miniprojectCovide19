@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-around;
   background-color: transparent;
-  padding: 60px;
+  padding: 30px;
 }
 .footerHeading {
   width: 130px;
@@ -38,18 +38,20 @@
 .iconsContainer {
   display: flex;
 }
-.gitIcon {
+.allIcons {
   font-size: 50px;
   color: #cbd5e1;
   margin: 5px;
 }
-.instIcon {
-  font-size: 50px;
-  color: #cbd5e1;
-  margin: 5px;
-}
-.twiIcon {
-  font-size: 50px;
-  fill: #cbd5e1;
-  margin: 5px;
+
+@media screen and (max-width: 576px) {
+  .allIcons {
+    font-size: 30px;
+  }
+  .footerHeading {
+    font-size: 16px;
+  }
+  .footerPara {
+    font-size: 12px;
+  }
 }

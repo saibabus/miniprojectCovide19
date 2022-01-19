@@ -165,12 +165,14 @@ const apiStatusConstants = {
 
 let codeis = ''
 const resultsListdistrict = []
+const showdistrictdata = []
 class StateSpecific extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     statedataAll: [],
     cardSelect: 'Confirmed',
-    districsData: [],
+
+    topdistrics: [],
   }
 
   componentDidMount() {
@@ -180,7 +182,7 @@ class StateSpecific extends Component {
   getstateData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     // console.log(this.props)
-
+    const {cardSelect} = this.state
     const {match} = this.props
     codeis = match.params.stateCode
 
@@ -189,9 +191,10 @@ class StateSpecific extends Component {
     //  const url = 'https://apis.ccbp.in/covid19-timelines-data'
 
     const response = await fetch(url)
-    if (response.ok) {
-      const data = await response.json()
+    //  console.log(response)
+    const data = await response.json()
 
+    if (response.ok === true && data.error_msg !== 'Invalid State Code') {
       // console.log(data)
       const eachDateDataDetails = []
       const updateddata = data[codeis].dates
@@ -230,9 +233,6 @@ class StateSpecific extends Component {
               Recovered: countofRecovered,
             })
           }
-          // console.log(datekeysof[lengthof - 1])
-
-          // const maindatais = datesdatais[datekeysof[lengthof - 1]]
         }
       })
       //  console.log(resultsListdistrict)
@@ -268,23 +268,15 @@ class StateSpecific extends Component {
           })
         }
       })
-      /*
-      const singledataonly = updateddata[keyNames[keylength - 1]]
-      const {total} = singledataonly
-      const recovereddata = total.recovered ? total.recovered : 0
-      const confirmeddata = total.confirmed ? total.confirmed : 0
-      const deceaseddata = total.deceased ? total.deceased : 0
-      const testeddata = total.tested ? total.tested : 0
-      const activedata = confirmeddata - (recovereddata + deceaseddata)
-      const singleData = {
-        recovereddata,
-        confirmeddata,
-        deceaseddata,
-        activedata,
-        testeddata,
-      }
 
-      */
+      resultsListdistrict.forEach(eachoneis => {
+        if (eachoneis[cardSelect] || eachoneis[cardSelect] === 0) {
+          showdistrictdata.push({
+            countis: eachoneis[cardSelect],
+            nameis: eachoneis.name,
+          })
+        }
+      })
 
       // console.log(updateddata)
       // console.log(districsdatais)
@@ -292,7 +284,7 @@ class StateSpecific extends Component {
       this.setState({
         apiStatus: apiStatusConstants.success,
         statedataAll: eachDateDataDetails,
-        districsData: resultsListdistrict,
+        topdistrics: showdistrictdata,
       })
     } else {
       this.setState({
@@ -306,21 +298,16 @@ class StateSpecific extends Component {
   }
 
   renderSuccessView = () => {
-    const {statedataAll, districsData, cardSelect} = this.state
+    const {statedataAll, topdistrics, cardSelect} = this.state
     // const dateofLength = statedataAll.length
 
-    console.log(statedataAll)
-    const showdistrictdata = []
-    districsData.forEach(eachoneis => {
-      if (eachoneis[cardSelect]) {
-        showdistrictdata.push({
-          countis: eachoneis[cardSelect],
-          nameis: eachoneis.name,
-        })
-      }
-    })
+    // console.log(statedataAll)
+    // console.log(districsData)
 
-    showdistrictdata.sort((a, b) => a.countis - b.countis)
+    //  const districtCounts = showdistrictdata.some(eachis => eachis.countis !== 0)
+    //  console.log(showdistrictdata)
+
+    topdistrics.sort((a, b) => b.countis - a.countis)
     // console.log(showdistrictdata)
 
     const nameofState = statesList.find(
@@ -371,17 +358,16 @@ class StateSpecific extends Component {
     return (
       <div className="sateSuccessCon" testid="timelinesDataLoader">
         <div className="nameandTestedcountContainer">
-          <div className="nameandUpdateContainer">
-            <div className="nameContainer">
-              <h1 className="stateNameheading">{nameofState}</h1>
-            </div>
-            <p className="updateText">Last update on march 28th 2021.</p>
+          <div className="nameContainer">
+            <h1 className="stateNameheading">{nameofState}</h1>
           </div>
           <div className="testedCountContainer">
             <p className="textedText">Tested</p>
             <p className="textedCount">{statedataAll[0].tested}</p>
           </div>
         </div>
+        <p className="updateText">Last update on march 28th 2021.</p>
+
         <ul className="stateSelectcontainer">
           {stateCardDetails.map(eachone => (
             <CovidSelectCard
@@ -395,7 +381,7 @@ class StateSpecific extends Component {
         <h1 className={`topdistrictText n${cardSelect}`}>Top Districts</h1>
 
         <ul className="stateDistrictsContainer">
-          {showdistrictdata.map(eachis => (
+          {topdistrics.map(eachis => (
             <DistrictItems
               key={`${eachis.nameis}1`}
               districtdatadetails={eachis}
