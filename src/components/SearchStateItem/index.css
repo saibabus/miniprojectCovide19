@@ -34,7 +34,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 6px;
+  padding: 10px;
   width: 76px;
   height: 32px;
   /* Transparent Info / 16% */
@@ -51,21 +51,19 @@
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 24px;
   /* identical to box height, or 150% */
 
   /* Light / yellow / 400 */
 
   color: #facc15;
+  padding-top: 4px;
 
   /* Inside auto layout */
-
-  margin: 0px 6px;
 }
 .arrows {
-  border: 2px solid #facc15;
-  border-radius: 3px;
-  padding: 3px;
+  font-size: 20px;
+  color: #facc15;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 576px) {
@@ -79,13 +77,12 @@
   }
   .code {
     font-size: 12px;
-    line-height: 20px;
+    padding-top: 5px;
   }
   .arrows {
-    border-radius: 2px;
-    padding: 2px;
-    height: 15px;
+    font-size: 14px;
   }
+
   .codeCon {
     height: 25px;
     width: 65px;

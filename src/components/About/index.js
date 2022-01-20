@@ -60,10 +60,10 @@ class About extends Component {
           COVID-19 vaccines be ready for distribution
         </h1>
         <ul className="factoidsdataCon" testid="faqsUnorderedList">
-          {faqData.map(eachone => (
-            <li className="eachFaqsCon" key={eachone.qno}>
-              <p className="question">{`${eachone.qno}. ${eachone.question}`}</p>
-              <p className="answer">{eachone.answer}</p>
+          {faqData.map(eachoneis => (
+            <li className="eachFaqsCon" key={eachoneis.question}>
+              <p className="question">{`${eachoneis.qno}. ${eachoneis.question}`}</p>
+              <p className="answer">{eachoneis.answer}</p>
             </li>
           ))}
         </ul>

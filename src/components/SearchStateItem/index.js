@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {BiChevronRightSquare} from 'react-icons/bi'
 import './index.css'
 
 const SearchStateItem = props => {
@@ -10,11 +11,8 @@ const SearchStateItem = props => {
         <p className="eachsearchInput">{stateName}</p>
         <div className="codeCon">
           <p className="code">{stateCode}</p>
-          <img
-            src="https://res.cloudinary.com/dlmaxnvuf/image/upload/v1641733890/Shape_gcmxk2.png"
-            alt="arrow"
-            className="arrows"
-          />
+
+          <BiChevronRightSquare className="arrows" />
         </div>
       </li>
     </Link>

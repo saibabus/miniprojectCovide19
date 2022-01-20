@@ -166,7 +166,7 @@ const apiStatusConstants = {
 let codeis = ''
 const resultsListdistrict = []
 const showdistrictdata = []
-class StateSpecific extends Component {
+class Statespecific extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     statedataAll: [],
@@ -428,4 +428,4 @@ class StateSpecific extends Component {
     )
   }
 }
-export default StateSpecific
+export default Statespecific

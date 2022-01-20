@@ -335,7 +335,7 @@ class Home extends Component {
           />
         </div>
         {showsContentdata ? (
-          <ul className="searchDataCon">
+          <ul className="searchDataCon" testid="searchResultsUnorderedList">
             {searchStateItems.map(eachstate => (
               <SearchStateItem
                 key={eachstate.stateCode}
@@ -360,9 +360,12 @@ class Home extends Component {
                 testid="stateWiseCovidDataTable"
                 className="stateWiseCovidDataTable"
               >
-                <li className="stateWiseCovidDataTableHeading">
+                <li
+                  className="stateWiseCovidDataTableHeading"
+                  key="tableHeadingofCovid"
+                >
                   <h1 className="stateWiseCovidDataTableHeadingOptionsPri">
-                    State/UT
+                    States/UT
                     <button
                       type="button"
                       className="buttonOrder"
