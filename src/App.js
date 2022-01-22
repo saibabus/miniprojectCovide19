@@ -3,7 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom'
 
 import Home from './components/Home'
 import About from './components/About'
-import Statespecific from './components/Statespecific'
+import StateSpecific from './components/StateSpecific'
 import ShowoptionsContext from './context/ShowopionsContext'
 import './App.css'
 import CovidError from './components/CovidError'
@@ -23,7 +23,7 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/state/:stateCode" component={Statespecific} />
+          <Route exact path="/state/:stateCode" component={StateSpecific} />
           <Route exact path="/about" component={About} />
           <Route exact path="/not-found" component={CovidError} />
           <Redirect to="/not-found" />

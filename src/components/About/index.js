@@ -62,7 +62,7 @@ class About extends Component {
         <ul className="factoidsdataCon" testid="faqsUnorderedList">
           {faqData.map(eachoneis => (
             <li className="eachFaqsCon" key={eachoneis.question}>
-              <p className="question">{`${eachoneis.qno}. ${eachoneis.question}`}</p>
+              <p className="question">{`${eachoneis.question}`}</p>
               <p className="answer">{eachoneis.answer}</p>
             </li>
           ))}

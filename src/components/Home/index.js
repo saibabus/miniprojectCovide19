@@ -355,11 +355,8 @@ class Home extends Component {
                 />
               ))}
             </ul>
-            <div className="tablewrap">
-              <ul
-                testid="stateWiseCovidDataTable"
-                className="stateWiseCovidDataTable"
-              >
+            <div className="tablewrap" testid="stateWiseCovidDataTable">
+              <ul className="stateWiseCovidDataTable">
                 <li
                   className="stateWiseCovidDataTableHeading"
                   key="tableHeadingofCovid"

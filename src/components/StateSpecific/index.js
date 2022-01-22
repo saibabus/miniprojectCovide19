@@ -164,9 +164,8 @@ const apiStatusConstants = {
 }
 
 let codeis = ''
-const resultsListdistrict = []
-const showdistrictdata = []
-class Statespecific extends Component {
+
+class StateSpecific extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     statedataAll: [],
@@ -182,7 +181,6 @@ class Statespecific extends Component {
   getstateData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     // console.log(this.props)
-    const {cardSelect} = this.state
     const {match} = this.props
     codeis = match.params.stateCode
 
@@ -197,6 +195,8 @@ class Statespecific extends Component {
     if (response.ok === true && data.error_msg !== 'Invalid State Code') {
       // console.log(data)
       const eachDateDataDetails = []
+      const resultsListdistrict = []
+
       const updateddata = data[codeis].dates
       const districsdatais = data[codeis].districts
       const disKeyName = Object.keys(districsdatais)
@@ -269,22 +269,13 @@ class Statespecific extends Component {
         }
       })
 
-      resultsListdistrict.forEach(eachoneis => {
-        if (eachoneis[cardSelect] || eachoneis[cardSelect] === 0) {
-          showdistrictdata.push({
-            countis: eachoneis[cardSelect],
-            nameis: eachoneis.name,
-          })
-        }
-      })
-
       // console.log(updateddata)
       // console.log(districsdatais)
 
       this.setState({
         apiStatus: apiStatusConstants.success,
         statedataAll: eachDateDataDetails,
-        topdistrics: showdistrictdata,
+        topdistrics: resultsListdistrict,
       })
     } else {
       this.setState({
@@ -297,17 +288,32 @@ class Statespecific extends Component {
     this.setState({cardSelect: caseis})
   }
 
+  filteredthedistricts = () => {
+    const {topdistrics, cardSelect} = this.state
+    const showdistrictdatais = []
+    topdistrics.forEach(eachoneis => {
+      if (eachoneis[cardSelect] || eachoneis[cardSelect] === 0) {
+        showdistrictdatais.push({
+          countis: eachoneis[cardSelect],
+          nameis: eachoneis.name,
+        })
+      }
+    })
+    return showdistrictdatais
+  }
+
   renderSuccessView = () => {
-    const {statedataAll, topdistrics, cardSelect} = this.state
+    const {statedataAll, cardSelect} = this.state
     // const dateofLength = statedataAll.length
 
     // console.log(statedataAll)
     // console.log(districsData)
+    const showdistrictdata = this.filteredthedistricts()
 
     //  const districtCounts = showdistrictdata.some(eachis => eachis.countis !== 0)
     //  console.log(showdistrictdata)
 
-    topdistrics.sort((a, b) => b.countis - a.countis)
+    showdistrictdata.sort((a, b) => b.countis - a.countis)
     // console.log(showdistrictdata)
 
     const nameofState = statesList.find(
@@ -381,7 +387,7 @@ class Statespecific extends Component {
         <h1 className={`topdistrictText n${cardSelect}`}>Top Districts</h1>
 
         <ul className="stateDistrictsContainer">
-          {topdistrics.map(eachis => (
+          {showdistrictdata.map(eachis => (
             <DistrictItems
               key={`${eachis.nameis}1`}
               districtdatadetails={eachis}
@@ -428,4 +434,4 @@ class Statespecific extends Component {
     )
   }
 }
-export default Statespecific
+export default StateSpecific

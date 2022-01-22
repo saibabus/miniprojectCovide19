@@ -47,6 +47,10 @@ const BarDataOfState = props => {
       const valueis = `${(eachoneis.count / 1000).toFixed(2)}K`
       return {...eachoneis, countupdate: valueis}
     }
+    if (eachoneis.count < 1000) {
+      const valueis = eachoneis.count
+      return {...eachoneis, countupdate: valueis}
+    }
     return eachoneis
   })
 
